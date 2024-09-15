@@ -32,7 +32,7 @@ with col2:
 
     if st.button("Submit Query"):
         if user_query:
-            book_recommendation_agent = Agent(
+            recommender = Agent(
                 role="Book Recommendation Agent",
                 goal="""Recommend books, papers, or articles based on the student's query.Give links that you find necessary.
                         Provide a suggestion that is relevant and helpful.""",
@@ -43,7 +43,7 @@ with col2:
                 llm=llama_model
             )
 
-            context_follow_up_agent = Agent(
+            follow_up = Agent(
                 role="Follow-up Agent",
                 goal="""Maintain conversation context to answer follow-up questions based on the student's original query.
                         Make sure the answers are relevant to the previous discussion.""",
@@ -53,21 +53,21 @@ with col2:
                 llm=llama_model
             )
 
-            book_recommendation_task = Task(
+            recommendation_task = Task(
                 description=f"Recommend books or papers along with their links based on the student's query: '{user_query}'",
                 agent=book_recommendation_agent,
                 expected_output="A recommended book, paper, or article along with their links."
             )
 
-            context_follow_up_task = Task(
+            follow_up_task = Task(
                 description=f"Handle follow-up query based on previous context from: '{user_query}'",
                 agent=context_follow_up_agent,
                 expected_output="A work on follow-up response."
             )
 
             crew = Crew(
-                agents=[book_recommendation_agent, context_follow_up_agent],
-                tasks=[book_recommendation_task, context_follow_up_task],
+                agents=[recommender,follow_up],
+                tasks=[recommendation_task, follow_up_task],
                 verbose=True,
                 process=Process.sequential
             )
