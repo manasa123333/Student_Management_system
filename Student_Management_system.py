@@ -55,14 +55,14 @@ with col2:
 
             recommendation_task = Task(
                 description=f"Recommend books or papers along with their links based on the student's query: '{user_query}'",
-                agent=book_recommendation_agent,
+                agent=book_recommender,
                 expected_output=" A recommended book, paper, or article along with their links."
             )
 
             follow_up_task = Task(
                 description= f"Handle follow-up query based on previous context from: '{user_query}'",
-                agent=context_follow_up_agent,
-                expected_output="A work on follow-up response."
+                agent=follow_up,
+                expected_output=" response based on he previous context."
             )
 
             crew = Crew(
