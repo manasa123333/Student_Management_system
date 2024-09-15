@@ -8,6 +8,8 @@ This repository contains Instruction based ai agent that takes query from studen
 
 https://huggingface.co/spaces/Manasa1/student_management_system
 
+https://github.com/user-attachments/assets/5c3368b7-f2be-4cbe-88a7-7589f3f4a09e
+
 
 
 
