@@ -10,7 +10,7 @@ api_key = os.getenv("SERPER_API_KEY")
 search_tool = SerperDevTool()
 
 llama_model = ChatGroq(
-    api_key='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',
+    api_key='gsk_mPmesto6dMZI2yWw4g0kWGdyb3FYFnyIyj4KeyL9P71rVAQtsN7',
     model='llama3-groq-70b-8192-tool-use-preview'
 )
 
@@ -33,10 +33,10 @@ with col2:
     if st.button("Submit Query"):
         if user_query:
             recommender = Agent(
-                role="Book Recommendation Agent",
-                goal="""Recommend books, papers, or articles based on the student's query.Give links that you find necessary.
-                        Provide a suggestion that is relevant and helpful.""",
-                backstory="You are an AI assistant focused on providing book recommendations to students.",
+                role = "Book Recommendation Agent",
+                goal = """Recommend books, papers, or articles based on the student's query.Give links that you find necessary.
+                        Provide any suggestion that is relevant and helpful.""",
+                backstory = "You are an AI assistant focused on providing book recommendations to students.",
                 verbose=True,
                 allow_delegation=False,
                 tools=[search_tool],
@@ -45,10 +45,10 @@ with col2:
 
             follow_up = Agent(
                 role="Follow-up Agent",
-                goal="""Maintain conversation context to answer follow-up questions based on the student's original query.
+                goal = """Maintain conversation context to answer follow-up questions based on the student's original query.
                         Make sure the answers are relevant to the previous discussion.""",
-                backstory="You are an AI assistant who work on follow-up question based on context.",
-                verbose=True,
+                backstory = "You are an AI assistant who work on follow-up question based on context.",
+                verbose = True,
                 allow_delegation=False,
                 llm=llama_model
             )
@@ -56,11 +56,11 @@ with col2:
             recommendation_task = Task(
                 description=f"Recommend books or papers along with their links based on the student's query: '{user_query}'",
                 agent=book_recommendation_agent,
-                expected_output="A recommended book, paper, or article along with their links."
+                expected_output=" A recommended book, paper, or article along with their links."
             )
 
             follow_up_task = Task(
-                description=f"Handle follow-up query based on previous context from: '{user_query}'",
+                description= f"Handle follow-up query based on previous context from: '{user_query}'",
                 agent=context_follow_up_agent,
                 expected_output="A work on follow-up response."
             )
