@@ -15,4 +15,18 @@ https://github.com/user-attachments/assets/5c3368b7-f2be-4cbe-88a7-7589f3f4a09e
 
 ## Features
 
-- Book and Paper Recommendations: Users can input queries about books, papers, or topics, and this multi ai agent app can  provides relevant recommendations along with useful links. This multiple ai agent system is made using crewai
+- Book and Paper Recommendations: It allows users to ask questions about papers, books, or topics, and gives recommendations related to them, along with useful links.
+- Follow-up Question Handling: The application retains the context of prior interactions to formulate answers to follow-up questions based on the original query.
+- History tracking: Keeps a record of queries and responses that shall be maintained on an interface for reference.
+- search tool: search the internet about the query and this gives relevant tools
+- Deployment - front end using streamlit and deployed on hugging face
+
+## model
+- used llama 3.1 model by using Groq api which fastens the process
+
+## Problems faced
+-- got versions problem from September 14. So need to install specific versions given in requirements.txt
+
+
+
+
